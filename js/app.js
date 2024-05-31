@@ -166,24 +166,47 @@ const juegos = [
 
 ];
 
-const contenedorJuegos = document.querySelector("#contenedor-juegos");
 
-function cargarJuegos() {
-    juegos.forEach(juego => {
-        const div = document.createElement("div");
-        div.classList.add("col-12", "col-md-6", "col-lg-4", "mb-4"); // Clases de Bootstrap para diseño responsivo
-        div.innerHTML = `
-            <div class="h-100">
-                <img class="card-img-top img-fluid" src="${juego.Image}" alt="${juego.titulo}">
-                <div class="card-body text-center">
-                    <h3 class="card-title">${juego.titulo}</h3>
-                    <p class="card-text">${juego.precio}</p>
-                    <button class="btn btn-primary" id="${juego.id}">Agregar</button>
+    const contenedorJuegos = document.querySelector("#contenedor-juegos");
+    const botonesCategorias = document.querySelectorAll(".boton-categoria");
+    const tituloPrincipal = document.querySelector("#titulo-principal");
+    let botonesAgregar = document.querySelectorAll(".juego-agregar");
+
+    function cargarJuegos(juegosElegidos) {
+        contenedorJuegos.innerHTML = ""; // Limpia el contenido anterior antes de cargar los nuevos juegos
+
+        juegosElegidos.forEach(juego => {
+            const div = document.createElement("div");
+            div.classList.add("col-12", "col-md-6", "col-lg-4", "mb-4"); 
+            div.innerHTML = `
+                <div class="h-100">
+                    <img class="card-img-top img-fluid" src="${juego.Image}" alt="${juego.titulo}">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">${juego.titulo}</h3>
+                        <p class="card-text">${juego.precio}</p>
+                        <button class="btn btn-primary juego-agregar" id="${juego.id}">Agregar</button>
+                    </div>
                 </div>
-            </div>
-        `;
-        contenedorJuegos.append(div);
-    });
-}
+            `;
+            contenedorJuegos.append(div);
+        });
+    }
 
-cargarJuegos();
+    cargarJuegos(juegos);
+
+    botonesCategorias.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            botonesCategorias.forEach(boton => boton.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+            if(e.currentTarget.id !="todos"){
+                const productoCategoria = juegos.find(juego => juego.categoria.id === e.currentTarget.id);
+                tituloPrincipal.innerText = productoCategoria.categoria.nombre;
+
+                const juegosBoton = juegos.filter(juego => juego.categoria.id === e.currentTarget.id);
+                cargarJuegos(juegosBoton);
+            }else{
+                tituloPrincipal.innerText="Todos los juegos"
+                cargarJuegos(juegos);
+            }
+        });
+    });
