@@ -18,4 +18,9 @@ body {
 
 main{
     background-color: aqua;
+    flex: 1;
+    overflow-y: auto;
 }
+
+
+
