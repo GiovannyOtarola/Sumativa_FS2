@@ -209,7 +209,7 @@ const juegos = [
                 const juegosBoton = juegos.filter(juego => juego.categoria.id === e.currentTarget.id);
                 cargarJuegos(juegosBoton);
             }else{
-                tituloPrincipal.innerText="Todos los juegos"
+                tituloPrincipal.innerText="Todos los Juegos"
                 cargarJuegos(juegos);
             }
         });
@@ -223,7 +223,17 @@ function actualizarBotonesAgregar(){
     });
 }
 
-const juegosEnCarrito = [];
+
+let juegosEnCarrito;
+let juegosEnCarritoLS =localStorage.getItem("juegos-en-carrito");
+
+if(juegosEnCarritoLS){
+    juegosEnCarrito = JSON.parse(juegosEnCarritoLS);
+    actualizarNumero();
+}else{
+    juegosEnCarrito = [];
+}
+
 
 function agregarAlCarrito(e){
 
@@ -238,5 +248,13 @@ function agregarAlCarrito(e){
         juegoAgregado.cantidad = 1;
         juegosEnCarrito.push(juegoAgregado);  
     } 
-    
+
+    actualizarNumero();
+
+    localStorage.setItem("juegos-en-carrito", JSON.stringify(juegosEnCarrito));
+}
+
+function actualizarNumero(){
+    let nuevoNumero = juegosEnCarrito.reduce((acc, juego) => acc + juego.cantidad, 0);
+    numcarrito.innerText = nuevoNumero;
 }
