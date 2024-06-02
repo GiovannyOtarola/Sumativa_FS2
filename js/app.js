@@ -258,3 +258,7 @@ function actualizarNumero(){
     let nuevoNumero = juegosEnCarrito.reduce((acc, juego) => acc + juego.cantidad, 0);
     numcarrito.innerText = nuevoNumero;
 }
+
+document.getElementById("btn-login").addEventListener("click", function() {
+    window.location.href = "../vista_usuario/login.html"; 
+});
