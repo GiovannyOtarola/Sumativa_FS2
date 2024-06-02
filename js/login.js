@@ -14,6 +14,16 @@ document.addEventListener("DOMContentLoaded", function() {
         // Obtener datos del localStorage
         const user = JSON.parse(localStorage.getItem('user'));
 
+        // Verificar si el usuario es el administrador
+        if (usuarioEmail.value === 'admin@gmail.com' && usuarioPassword.value === 'admin12') {
+            alert('Inicio de sesión como administrador exitoso');
+            // Guardar indicación de sesión activa en localStorage
+            localStorage.setItem('sessionActive', true);
+            // Redirigir a la página de administrador
+            window.location.href = 'admin.html';
+            return; // Salir de la función después de redirigir al administrador
+        }
+
         // Verificar si el usuario existe en localStorage
         if (user) {
             // Validar credenciales
