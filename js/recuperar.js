@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const usuarioEmail = document.getElementById('usuarioEmail');
 
     mostrarPasswordBtn.addEventListener('click', function(){
-        const userEmail = usuarioEmail.value.trim(); // Obtener el valor del correo electrónico del campo de entrada
+        const userEmail = usuarioEmail.value.trim(); 
 
         // Verificar si se ha ingresado un correo electrónico
         if (!userEmail) {

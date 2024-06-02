@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     cargarUsuarios();
-
+    // boton cerrar sesion 
     btnLogout.addEventListener('click', function() {
         localStorage.removeItem('sessionActive');
         window.location.href = 'login.html';
