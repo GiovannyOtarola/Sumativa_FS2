@@ -267,7 +267,7 @@ document.getElementById("btn-login").addEventListener("click", function() {
     window.location.href = "../vista_usuario/login.html"; 
 });
 
-  // Verificar si el usuario ha iniciado sesión
+  
   const sessionActive = localStorage.getItem('sessionActive');
 
   if (sessionActive) {

@@ -12,32 +12,32 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
 
         // Obtener datos del localStorage
-        const user = JSON.parse(localStorage.getItem('user'));
+        const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
 
         // Verificar si el usuario es el administrador
         if (usuarioEmail.value === 'admin@gmail.com' && usuarioPassword.value === 'admin12') {
             alert('Inicio de sesión como administrador exitoso');
             // Guardar indicación de sesión activa en localStorage
             localStorage.setItem('sessionActive', true);
+            // Guardar email del administrador como usuario activo
+            localStorage.setItem('activeUserEmail', usuarioEmail.value);
             // Redirigir a la página de administrador
             window.location.href = 'admin.html';
             return; // Salir de la función después de redirigir al administrador
         }
 
         // Verificar si el usuario existe en localStorage
-        if (user) {
-            // Validar credenciales
-            if (user.email === usuarioEmail.value && user.password === usuarioPassword.value) {
-                alert('Inicio de sesión exitoso');
-                // Guardar indicación de sesión activa en localStorage
-                localStorage.setItem('sessionActive', true);
-                // Redirigir a la página de inicio
-                window.location.href = 'index.html';
-            } else {
-                alert('Correo electrónico o contraseña incorrectos');
-            }
+        const usuario = usuarios.find(user => user.email === usuarioEmail.value && user.password === usuarioPassword.value);
+        if (usuario) {
+            alert('Inicio de sesión exitoso');
+            // Guardar indicación de sesión activa en localStorage
+            localStorage.setItem('sessionActive', true);
+            // Guardar email del usuario activo
+            localStorage.setItem('activeUserEmail', usuario.email);
+            // Redirigir a la página de inicio
+            window.location.href = 'index.html';
         } else {
-            alert('No hay usuarios registrados');
+            alert('Correo electrónico o contraseña incorrectos');
         }
     });
 });

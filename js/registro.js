@@ -96,7 +96,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (isValid) {
-                // Guardar en localStorage
+                // Recuperar usuarios del localStorage
+                let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            
+                // Crear nuevo usuario
                 const user = {
                     nombreCompleto: nombre_completo.value,
                     nombreUsuario: usuario.value,
@@ -105,9 +108,14 @@ document.addEventListener("DOMContentLoaded", function() {
                     direccionDespacho: direccion_despacho.value,
                     password: password.value
                 };
-
-                localStorage.setItem('user', JSON.stringify(user));
+            
+                // Añadir nuevo usuario al array de usuarios
+                usuarios.push(user);
+            
+                // Guardar en localStorage
+                localStorage.setItem('usuarios', JSON.stringify(usuarios));
                 alert('Registro exitoso');
+            
                 // Redirigir al login
                 window.location.href = 'login.html';
             }
