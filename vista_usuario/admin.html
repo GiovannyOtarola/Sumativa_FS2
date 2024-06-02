@@ -8,8 +8,25 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1 class="text-center mt-5 text-white fw-bold ">Panel de Administración</h1>
+        <nav class="navbar navbar-expand-md navbar-light ">
+            <div class="container-fluid">
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-controls="navCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navCollapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <button id="btn-logout" class="btn btn-primary">Cerrar sesión</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        </nav>
+    </header>  
+    <div class="container">
         <div class="table-responsive mt-5">
             <table class="table table-bordered table-striped">
                 <thead>

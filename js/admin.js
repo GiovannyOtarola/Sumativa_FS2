@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tablaUsuarios = document.getElementById('tabla-usuarios');
+    const btnLogout = document.getElementById('btn-logout');
 
     // Recuperar los datos del localStorage
     let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
@@ -23,4 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     cargarUsuarios();
+
+    btnLogout.addEventListener('click', function() {
+        localStorage.removeItem('sessionActive');
+        window.location.href = 'login.html';
+    });
 });
