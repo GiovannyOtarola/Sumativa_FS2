@@ -14,15 +14,19 @@
         <p class="text-center text-dark">Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
         <form>
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico">
+                <label for="usuarioEmail" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="usuarioEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico">
             </div>
-            <button type="submit" class="btn btn-primary w-100">Enviar enlace de recuperación</button>
+            <button type="button" id="mostrarPasswordBtn" class="btn btn-primary w-100">mostrar contraseña</button>
         </form>
+        <div class=" text-center mt-3">
+            <a  href="./login.html">Volver</a>
+        </div>
     </div>
     <footer >
         <p class="fw-bold">© 2024 Nombre. Todos los derechos reservados.</p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../js/recuperar.js"></script>
 </body>
 </html>
