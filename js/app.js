@@ -173,6 +173,10 @@ const juegos = [
     let botonesAgregar = document.querySelectorAll(".juego-agregar");
     const numCarrito = document.querySelector("#numcarrito");
 
+    const btnLogin = document.getElementById('btn-login');
+    const btnPerfil = document.getElementById('btn-perfil');
+    const btnLogout = document.getElementById('btn-logout');
+
     function cargarJuegos(juegosElegidos) {
         contenedorJuegos.innerHTML = ""; // Limpia el contenido anterior antes de cargar los nuevos juegos
 
@@ -262,3 +266,31 @@ function actualizarNumero(){
 document.getElementById("btn-login").addEventListener("click", function() {
     window.location.href = "../vista_usuario/login.html"; 
 });
+
+  // Verificar si el usuario ha iniciado sesión
+  const sessionActive = localStorage.getItem('sessionActive');
+
+  if (sessionActive) {
+      // Ocultar botón de Logearse
+      btnLogin.classList.add('d-none');
+      // Mostrar botón de Mi perfil
+      btnPerfil.classList.remove('d-none');
+      // Mostrar botón de Cerrar sesión
+      btnLogout.classList.remove('d-none');
+  }
+
+  // Redirigir a la página de perfil al hacer clic en el botón de Mi perfil
+  btnPerfil.addEventListener('click', function() {
+      window.location.href = 'perfil.html';
+  });
+
+  // Cerrar sesión
+  btnLogout.addEventListener('click', function() {
+      localStorage.removeItem('sessionActive');
+      window.location.reload(); // Recargar la página para aplicar cambios
+  });
+
+  // Redirigir a la página de login al hacer clic en el botón de Logearse
+  btnLogin.addEventListener('click', function() {
+      window.location.href = 'login.html';
+  });
